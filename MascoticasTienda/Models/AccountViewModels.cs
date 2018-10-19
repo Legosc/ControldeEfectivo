@@ -50,7 +50,6 @@ namespace MascoticasTienda.Models
     {
         [Required]
         [Display(Name = "Correo electrónico")]
-        [EmailAddress]
         public string Email { get; set; }
 
         [Required]

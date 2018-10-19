@@ -1,4 +1,5 @@
-﻿<header class="header-desktop">
+﻿@using Microsoft.AspNet.Identity
+<header class="header-desktop">
     <div class="section__content section__content--p30">
         <div class="container-fluid">
             <div class="header-wrap">
@@ -156,9 +157,14 @@
                                     </div>
                                 </div>
                                 <div class="account-dropdown__footer">
-                                    <a href="/login/Logoff">
+                                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                    {
+                                    @Html.AntiForgeryToken()
+                                    <a href="javascript:document.getElementById('logoutForm').submit()">
                                         <i class="zmdi zmdi-power"></i>Logout
                                     </a>
+                                    }
+
                                 </div>
                             </div>
                         </div>

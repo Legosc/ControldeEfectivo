@@ -11,7 +11,7 @@
         <div class="login-content">
             <div class="login-logo">
                 <a href="#">
-                    <img src="@Href("~/Images/cropped-CRLibre-Logo_15-1.png")" class="img-fluid" alt="Logo">
+                    <img src="@Href("~/Images/petshop.png")" class="img-fluid" style="max-width:50%;" alt="Logo">
                 </a>
             </div>
             <div class="login-form">
@@ -21,7 +21,7 @@
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
                 <label for="userName">Usuario</label>
-                @Html.TextBoxFor(model => model.Email, new { @class = "au-input au-input--full", @placeholder = "Usuario" })
+                @Html.TextBoxFor(model => model.Email, new { @class = "au-input au-input--full", @placeholder = "Correo" })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
             <div class="form-group">

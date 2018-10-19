@@ -22,16 +22,18 @@ namespace MascoticasTienda.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         
-
         public ApplicationDbContext()
-            : base("MyContext", throwIfV1Schema: false)
+            : base("Mascotica", throwIfV1Schema: false)
         {
             DbConfiguration.SetConfiguration(new MySqlEFConfiguration());
         }
-
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+        public virtual DbSet<Efectivo> Efectivos { get; set; }
+        public virtual DbSet<Destino> Destinos { get; set; }
+        public virtual DbSet<Moneda> Monedas { get; set; }
+        public virtual DbSet<MovimientoEfectivo> MovimientoEfectivos { get; set; }
     }
 }
