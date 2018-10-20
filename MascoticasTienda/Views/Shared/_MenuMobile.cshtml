@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="header-mobile-inner">
                 <a class="logo" href="index.html">
-                    <img src="~/Images/cropped-CRLibre-Logo_15-1.png" class="img-fluid" alt="Logo">
+                    <img src="~/Images/petshop.png" style="max-width:50%" class="img-fluid" alt="Logo">
                 </a>
                 <button class="hamburger hamburger--slider" type="button">
                     <span class="hamburger-box">
@@ -16,27 +16,25 @@
     <nav class="navbar-mobile">
         <div class="container-fluid">
             <ul class="navbar-mobile__list list-unstyled">
-                <li class="has-sub @(Url.RouteUrl(ViewContext.RouteData.Values) == "/Home" ? "active" : "")">
+                <li class="has-sub @(Url.RouteUrl(ViewContext.RouteData.Values) == "/Efectivo" ? "active" : "")">
                     <a class="js-arrow" href="#">
-                        <i class="fas fa-tachometer-alt"></i>Reportes
+                        <i class="fas fa-tachometer-alt"></i>Efectivo
                     </a>
-                    <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li>
-                            <a href="/reportes/ventas">Ventas</a>
+                            <a href="/efectivo/reportes">Reportes</a>
                         </li>
                         <li>
-                            <a href="/reportes/compras">Compras</a>
+                            <a href="/efectivo/cierre">Cierre Caja</a>
+                        </li>
+                        <li>
+                            <a href="/efectivo/movimiento">Movimientos</a>
                         </li>
                     </ul>
                 </li>
-                <li class="@(Url.RouteUrl(ViewContext.RouteData.Values) == "/ventas" ? "active" : "")">
-                    <a href="/ventas">
-                        <i class="fas fa-chart-bar"></i>Ventas
-                    </a>
-                </li>
-                <li @(Url.RouteUrl(ViewContext.RouteData.Values) == "/compras" ? "active" : "")>
-                    <a href="/compras">
-                        <i class="fas fa-table"></i>Compras
+                <li class="@(Url.RouteUrl(ViewContext.RouteData.Values) == "/citas" ? "active" : "")">
+                    <a href="/Citas">
+                        <i class="fas fa-chart-bar"></i>Citas
                     </a>
                 </li>
                 <li class="@(Url.RouteUrl(ViewContext.RouteData.Values) == "/contact" ? "active" : "")">
@@ -44,6 +42,22 @@
                         <i class="far fa-check-square"></i>Contactos
                     </a>
                 </li>
+                @if (this.User.IsInRole("Admin"))
+                {
+            <li class="has-sub @(Url.RouteUrl(ViewContext.RouteData.Values) == "/Settings" ? "active" : "")">
+                <a class="js-arrow" href="#">
+                    <i class="fas fa-tachometer-alt"></i>Configuracion
+                </a>
+                <ul class="list-unstyled navbar__sub-list js-sub-list">
+                    <li>
+                        <a href="/Settings/Roles">Roles</a>
+                    </li>
+                    <li>
+                        <a href="/Settings/Users">Usuarios</a>
+                    </li>
+                </ul>
+            </li>
+                }
             </ul>
         </div>
     </nav>

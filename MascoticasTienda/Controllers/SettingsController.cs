@@ -9,12 +9,23 @@ using System.Web.Mvc;
 namespace MascoticasTienda.Controllers
 {
     [Authorize]
-    public class RoleController : Controller
+    public class SettingsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        
-        // GET: Role
+
+        //Roles
         public ActionResult Index(RoleMessageId? message)
+        {
+            ViewBag.StatusMessage =
+                message == RoleMessageId.CreateSuccess ? "Su contraseña se ha cambiado."
+                : message == RoleMessageId.EditSuccess ? "Su contraseña se ha establecido."
+                : message == RoleMessageId.DeleteSuccess ? "Su proveedor de autenticación de dos factores se ha establecido."
+                : message == RoleMessageId.Error ? "Se ha producido un error."
+                : "";
+            return View();
+        }
+
+        public ActionResult Roles(RoleMessageId? message)
         {
             ViewBag.StatusMessage =
                 message == RoleMessageId.CreateSuccess ? "Su contraseña se ha cambiado."

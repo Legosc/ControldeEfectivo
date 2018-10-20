@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MascoticasTienda.Models;
+using System.Threading;
 
 namespace MascoticasTienda.Controllers
 {
@@ -57,8 +58,18 @@ namespace MascoticasTienda.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            ViewBag.ReturnUrl = returnUrl;
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                return Redirect("/Settings/Index");
+            }
+            else
+            {
+                ViewBag.ReturnUrl = returnUrl;
+                return View();
+
+            }
+
+            
         }
 
         //
@@ -78,7 +89,7 @@ namespace MascoticasTienda.Controllers
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
-                case SignInStatus.Success:
+                case SignInStatus.Success:               
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");

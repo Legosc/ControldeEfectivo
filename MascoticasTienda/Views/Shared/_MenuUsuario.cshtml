@@ -1,4 +1,8 @@
 ﻿@using Microsoft.AspNet.Identity
+@{
+    var claimsIdentity = User.Identity as System.Security.Claims.ClaimsIdentity;
+    ViewBag.email= claimsIdentity.FindFirstValue("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress");
+}
 <header class="header-desktop">
     <div class="section__content section__content--p30">
         <div class="container-fluid">
@@ -11,7 +15,7 @@
                 </form>
                 <div class="header-button">
                     <div class="noti-wrap">
-                        <div class="noti__item js-item-menu">
+                        <!--  <div class="noti__item js-item-menu">
                             <i class="zmdi zmdi-comment-more"></i>
                             <span class="quantity">1</span>
                             <div class="mess-dropdown js-dropdown">
@@ -82,6 +86,7 @@
                                 </div>
                             </div>
                         </div>
+                        -->
                         <div class="noti__item js-item-menu">
                             <i class="zmdi zmdi-notifications"></i>
                             <span class="quantity">3</span>
@@ -134,14 +139,14 @@
                                 <div class="info clearfix">
                                     <div class="image">
                                         <a href="#">
-                                            <img src="~/Images/avatar-01.png" alt="John Doe" />
+                                            <img src="~/Images/avatar-01.png" alt="@User.Identity.Name" />
                                         </a>
                                     </div>
                                     <div class="content">
                                         <h5 class="name">
                                             <a href="#">@User.Identity.Name</a>
                                         </h5>
-                                        <span class="email">johndoe@example.com</span>
+                                        <span class="email">@ViewBag.email</span>
                                     </div>
                                 </div>
                                 <div class="account-dropdown__body">
@@ -159,10 +164,10 @@
                                 <div class="account-dropdown__footer">
                                     @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                                     {
-                                    @Html.AntiForgeryToken()
-                                    <a href="javascript:document.getElementById('logoutForm').submit()">
-                                        <i class="zmdi zmdi-power"></i>Logout
-                                    </a>
+                                        @Html.AntiForgeryToken()
+                                        <a href="javascript:document.getElementById('logoutForm').submit()">
+                                            <i class="zmdi zmdi-power"></i>Logout
+                                        </a>
                                     }
 
                                 </div>
