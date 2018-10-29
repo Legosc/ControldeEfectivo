@@ -426,6 +426,10 @@
     <Content Include="Views\Shared\_MenuUsuario.cshtml" />
     <Content Include="Views\Settings\Index.cshtml" />
     <Content Include="Views\Settings\Roles.cshtml" />
+    <Content Include="Views\Settings\CreateRole.cshtml" />
+    <Content Include="Views\Settings\DeleteRole.cshtml" />
+    <Content Include="Views\Settings\CreateMoneda.cshtml" />
+    <Content Include="Views\Shared\_ListMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

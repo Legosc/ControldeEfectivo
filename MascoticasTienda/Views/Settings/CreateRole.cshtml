@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Crear Role";
+}
+
+<h2>View</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Role</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label for="Name" class="control-label col-md-2">Nombre</label>
+            <div class="col-md-10">
+                <input name="Name" class="form-control text-box single-line" id="Name" type="text" value="">
+                <span class="field-validation-valid text-danger" data-valmsg-replace="true" data-valmsg-for="Name"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
