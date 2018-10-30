@@ -216,6 +216,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EfectivoController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -430,6 +431,10 @@
     <Content Include="Views\Settings\DeleteRole.cshtml" />
     <Content Include="Views\Settings\CreateMoneda.cshtml" />
     <Content Include="Views\Shared\_ListMenu.cshtml" />
+    <Content Include="Views\Efectivo\Index.cshtml" />
+    <Content Include="Views\Efectivo\Reportes.cshtml" />
+    <Content Include="Views\Efectivo\Cierre.cshtml" />
+    <Content Include="Views\Efectivo\Movimientos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
