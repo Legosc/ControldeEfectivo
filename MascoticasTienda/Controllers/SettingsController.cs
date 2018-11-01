@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -83,8 +84,10 @@ namespace MascoticasTienda.Controllers
         public ActionResult DeleteRole(IdentityRole role)
         {
             RoleMessageId? message;
+            db.Entry(role).State = EntityState.Deleted;
             db.Roles.Remove(role);
             message = RoleMessageId.DeleteSuccess;
+            db.SaveChangesAsync();
             return RedirectToAction("Index", new { Message = message });
         }
         public enum RoleMessageId
@@ -115,8 +118,33 @@ namespace MascoticasTienda.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateMoneda(Moneda moneda)
         {
+            MonedaMessageId? message;
+            if (!ModelState.IsValid)
+            {
+                return View(moneda);
+            }
             db.Monedas.Add(moneda);
-            return View();
+
+            message = MonedaMessageId.CreateSuccess;
+            db.SaveChanges();
+            return RedirectToAction("Index", new { Message = message });
+        }
+        public ActionResult DeleteMoneda(Int32 Id)
+        {
+            Moneda model;
+            model = db.Monedas.Where(d => d.ID == Id).Single();
+            return View(model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteMoneda(Moneda model)
+        {
+            MonedaMessageId? message;
+            db.Entry(model).State = EntityState.Deleted;
+            db.Monedas.Remove(model);
+            message = MonedaMessageId.DeleteSuccess;
+            db.SaveChanges();
+            return RedirectToAction("Index", new { Message = message });
         }
         public enum MonedaMessageId
         {
@@ -126,5 +154,19 @@ namespace MascoticasTienda.Controllers
             Error
         }
         //END Monedas
+        //EFECTIVO
+        public ActionResult AjusteEfectivo()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AjusteEfectivo(MovimientoEfectivo movimiento, IEnumerable<Moneda> monedas)
+        {
+            MonedaMessageId? message;
+            message = MonedaMessageId.DeleteSuccess;
+
+            return RedirectToAction("Index", new { Message = message });
+        }
     }
 }

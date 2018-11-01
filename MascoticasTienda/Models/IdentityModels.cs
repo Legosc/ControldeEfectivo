@@ -36,5 +36,6 @@ namespace MascoticasTienda.Models
         public virtual DbSet<Destino> Destinos { get; set; }
         public virtual DbSet<Moneda> Monedas { get; set; }
         public virtual DbSet<MovimientoEfectivo> MovimientoEfectivos { get; set; }
+        public virtual DbSet<MovimientoDetalle> MovimientoDetalles { get; set; }
     }
 }

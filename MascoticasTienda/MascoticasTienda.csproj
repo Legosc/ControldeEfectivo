@@ -230,8 +230,17 @@
     <Compile Include="Migrations\201810181734581_EfectivoCaja.Designer.cs">
       <DependentUpon>201810181734581_EfectivoCaja.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810310021442_cambiosdb.cs" />
+    <Compile Include="Migrations\201810310021442_cambiosdb.Designer.cs">
+      <DependentUpon>201810310021442_cambiosdb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810310151037_cambiomovimientos.cs" />
+    <Compile Include="Migrations\201810310151037_cambiomovimientos.Designer.cs">
+      <DependentUpon>201810310151037_cambiomovimientos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\MovimientoDetalle.cs" />
     <Compile Include="Models\Destino.cs" />
     <Compile Include="Models\Efectivo.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -435,6 +444,9 @@
     <Content Include="Views\Efectivo\Reportes.cshtml" />
     <Content Include="Views\Efectivo\Cierre.cshtml" />
     <Content Include="Views\Efectivo\Movimientos.cshtml" />
+    <Content Include="Views\Settings\Monedas.cshtml" />
+    <Content Include="Views\Settings\DeleteMoneda.cshtml" />
+    <Content Include="Views\Shared\AjusteEfectivo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -574,6 +586,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810181734581_EfectivoCaja.resx">
       <DependentUpon>201810181734581_EfectivoCaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810310021442_cambiosdb.resx">
+      <DependentUpon>201810310021442_cambiosdb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810310151037_cambiomovimientos.resx">
+      <DependentUpon>201810310151037_cambiomovimientos.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
